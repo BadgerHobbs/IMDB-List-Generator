@@ -81,7 +81,7 @@ addListByTitleYear(data)
 
 Final line.
 ```
-addListByTitleYear(getLocalListWithTitleYears("list.txt","movie"))
+addListByTitleYear(getLocalListWithTitleYears("list.txt","movies"))
 ```
 
 
