@@ -27,6 +27,8 @@ def addItemByTitleYear(title, year, itemType):
 
         itemType = "TV series"
 
+    year = year.replace("(","").replace(")","")
+
     searchTitle = title.replace(" ","_") 
 
     url = 'https://v2.sg.media-imdb.com/suggestion/titles/' + searchTitle[0].lower() + '/' + searchTitle + '.json'
@@ -43,7 +45,7 @@ def addItemByTitleYear(title, year, itemType):
 
                 results.append([movie['l'],str(movie['y'])])
 
-                if (movie['l'] == title) and (movie['q'] == itemType) and ((str(movie['y']) == str(year)) or (str(movie['y']) == str(int(year)-1))):
+                if (movie['l'].lower() == title.lower()) and (movie['q'].lower() == itemType.lower()) and ((str(movie['y']) == str(year)) or (str(movie['y']) == str(int(year)-1))):
                     
                     headers = {
 
@@ -159,13 +161,23 @@ def addListByIDs(listData):
 
     for item in listData:
 
-        addItemByID(item)
+        try:
+
+            addItemByID(item)
+
+        except:
+            pass
 
 def addListByTitleYear(listData):
 
     for item in listData:
 
-        addItemByTitleYear(item[0], item[1], item[2])
+        try:
+
+            addItemByTitleYear(item[0], item[1], item[2])
+
+        except:
+            pass
 
 
 addListByIDs(getLocalListWithIDs("list.txt"))
