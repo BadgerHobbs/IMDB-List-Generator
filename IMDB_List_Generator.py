@@ -19,7 +19,7 @@ webInfo = {
 
 def addItemByTitleYear(title, year, itemType):
 
-    if itemType == "movie":
+    if itemType == "movies:
 
         itemType = "feature"
 
